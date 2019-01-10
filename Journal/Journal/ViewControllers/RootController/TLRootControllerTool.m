@@ -7,6 +7,8 @@
 //
 
 #import "TLRootControllerTool.h"
+#import "JXNavigationController.h"
+#import "HomeViewController.h"
 
 @implementation TLRootControllerTool
 
@@ -16,6 +18,9 @@
     } else {
 
     }
+    HomeViewController *homeController  = [[HomeViewController alloc] init];
+    JXNavigationController *navgationController = [[JXNavigationController alloc] initWithRootViewController:homeController];
+    TL_Winow.rootViewController = navgationController;
     
 }
 

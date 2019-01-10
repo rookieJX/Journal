@@ -51,6 +51,7 @@
 		2630A9E121E5903800EA409D /* login_input_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2630A9C221E5903800EA409D /* login_input_close@2x.png */; };
 		2630A9EE21E5C41300EA409D /* TLRootControllerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2630A9EC21E5C41300EA409D /* TLRootControllerTool.m */; };
 		2630A9F221E5C4EB00EA409D /* TLDeviceSettingInfoManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 2630A9F121E5C4EB00EA409D /* TLDeviceSettingInfoManger.m */; };
+		2630A9F821E6F8A000EA409D /* JXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2630A9F721E6F8A000EA409D /* JXNavigationController.m */; };
 		B6A953C31FCCD1F68FB3CC0A /* libPods-Journal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D097D9560C7475E218DC61D /* libPods-Journal.a */; };
 /* End PBXBuildFile section */
 
@@ -160,6 +161,8 @@
 		2630A9ED21E5C41300EA409D /* TLRootControllerTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLRootControllerTool.h; sourceTree = "<group>"; };
 		2630A9F021E5C4EB00EA409D /* TLDeviceSettingInfoManger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLDeviceSettingInfoManger.h; sourceTree = "<group>"; };
 		2630A9F121E5C4EB00EA409D /* TLDeviceSettingInfoManger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLDeviceSettingInfoManger.m; sourceTree = "<group>"; };
+		2630A9F621E6F8A000EA409D /* JXNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXNavigationController.h; sourceTree = "<group>"; };
+		2630A9F721E6F8A000EA409D /* JXNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXNavigationController.m; sourceTree = "<group>"; };
 		3D097D9560C7475E218DC61D /* libPods-Journal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Journal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		941A4742B4A3180250A6132A /* Pods-Journal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Journal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Journal/Pods-Journal.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -228,6 +231,7 @@
 		2630A94A21E58A4900EA409D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				2630A9F521E6F89200EA409D /* NavigationController */,
 				2630A9EB21E5C40100EA409D /* RootController */,
 				2630A94D21E58CD200EA409D /* Home */,
 			);
@@ -541,6 +545,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		2630A9F521E6F89200EA409D /* NavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				2630A9F621E6F8A000EA409D /* JXNavigationController.h */,
+				2630A9F721E6F8A000EA409D /* JXNavigationController.m */,
+			);
+			path = NavigationController;
+			sourceTree = "<group>";
+		};
 		37123F7C024A409668779DA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -727,6 +740,7 @@
 				2630A9D521E5903800EA409D /* TLJudgeHelper.m in Sources */,
 				2630A9CA21E5903800EA409D /* TLAppInfoManager.m in Sources */,
 				2630A9C921E5903800EA409D /* TLNoDataView.m in Sources */,
+				2630A9F821E6F8A000EA409D /* JXNavigationController.m in Sources */,
 				2630A9CF21E5903800EA409D /* UIViewController+MMDrawerController.m in Sources */,
 				2630A9F221E5C4EB00EA409D /* TLDeviceSettingInfoManger.m in Sources */,
 				2630A9DD21E5903800EA409D /* TLTextView.m in Sources */,
