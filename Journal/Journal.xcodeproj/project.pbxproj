@@ -52,6 +52,8 @@
 		2630A9EE21E5C41300EA409D /* TLRootControllerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2630A9EC21E5C41300EA409D /* TLRootControllerTool.m */; };
 		2630A9F221E5C4EB00EA409D /* TLDeviceSettingInfoManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 2630A9F121E5C4EB00EA409D /* TLDeviceSettingInfoManger.m */; };
 		2630A9F821E6F8A000EA409D /* JXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2630A9F721E6F8A000EA409D /* JXNavigationController.m */; };
+		2630A9FB21E72F5E00EA409D /* HomeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2630A9FA21E72F5E00EA409D /* HomeViewCell.m */; };
+		2630A9FF21E730E500EA409D /* JXSaveTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2630A9FE21E730E500EA409D /* JXSaveTool.m */; };
 		B6A953C31FCCD1F68FB3CC0A /* libPods-Journal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D097D9560C7475E218DC61D /* libPods-Journal.a */; };
 /* End PBXBuildFile section */
 
@@ -163,6 +165,10 @@
 		2630A9F121E5C4EB00EA409D /* TLDeviceSettingInfoManger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLDeviceSettingInfoManger.m; sourceTree = "<group>"; };
 		2630A9F621E6F8A000EA409D /* JXNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXNavigationController.h; sourceTree = "<group>"; };
 		2630A9F721E6F8A000EA409D /* JXNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXNavigationController.m; sourceTree = "<group>"; };
+		2630A9F921E72F5E00EA409D /* HomeViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewCell.h; sourceTree = "<group>"; };
+		2630A9FA21E72F5E00EA409D /* HomeViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewCell.m; sourceTree = "<group>"; };
+		2630A9FD21E730E500EA409D /* JXSaveTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXSaveTool.h; sourceTree = "<group>"; };
+		2630A9FE21E730E500EA409D /* JXSaveTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXSaveTool.m; sourceTree = "<group>"; };
 		3D097D9560C7475E218DC61D /* libPods-Journal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Journal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		941A4742B4A3180250A6132A /* Pods-Journal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Journal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Journal/Pods-Journal.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -290,8 +296,8 @@
 		2630A95421E58F5100EA409D /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				2630A9FC21E730C100EA409D /* SaveTool */,
 				2630A99D21E5903400EA409D /* TLHelperMacros.h */,
-				2630A9EF21E5C4D700EA409D /* ManagerCenter */,
 				2630A98221E5903200EA409D /* APPInfoTool */,
 				2630A98521E5903200EA409D /* ArchiverTool */,
 				2630A9A421E5903500EA409D /* ControllerTool */,
@@ -300,6 +306,7 @@
 				2630A98D21E5903300EA409D /* DrawTool */,
 				2630A9A721E5903600EA409D /* HUDTool */,
 				2630A9A121E5903500EA409D /* JudgeTool */,
+				2630A9EF21E5C4D700EA409D /* ManagerCenter */,
 				2630A9BA21E5903800EA409D /* TLInputTool */,
 				2630A97A21E5903100EA409D /* TLNoDataTool */,
 				2630A98821E5903300EA409D /* TLTimeTool */,
@@ -392,8 +399,8 @@
 		2630A98521E5903200EA409D /* ArchiverTool */ = {
 			isa = PBXGroup;
 			children = (
-				2630A98621E5903200EA409D /* TLArchiverTool.m */,
 				2630A98721E5903200EA409D /* TLArchiverTool.h */,
+				2630A98621E5903200EA409D /* TLArchiverTool.m */,
 			);
 			path = ArchiverTool;
 			sourceTree = "<group>";
@@ -466,8 +473,8 @@
 		2630A9A421E5903500EA409D /* ControllerTool */ = {
 			isa = PBXGroup;
 			children = (
-				2630A9A521E5903500EA409D /* TLMyControlTool.m */,
 				2630A9A621E5903500EA409D /* TLMyControlTool.h */,
+				2630A9A521E5903500EA409D /* TLMyControlTool.m */,
 			);
 			path = ControllerTool;
 			sourceTree = "<group>";
@@ -493,13 +500,13 @@
 		2630A9BA21E5903800EA409D /* TLInputTool */ = {
 			isa = PBXGroup;
 			children = (
-				2630A9BB21E5903800EA409D /* TLTextView.m */,
-				2630A9BC21E5903800EA409D /* TLLimitPhoneNumberTextField.h */,
-				2630A9BD21E5903800EA409D /* TLInPutView.m */,
-				2630A9BE21E5903800EA409D /* TLLimitPhoneNumberTextField.m */,
-				2630A9BF21E5903800EA409D /* TLTextView.h */,
 				2630A9C021E5903800EA409D /* Resource */,
 				2630A9C321E5903800EA409D /* TLInPutView.h */,
+				2630A9BD21E5903800EA409D /* TLInPutView.m */,
+				2630A9BC21E5903800EA409D /* TLLimitPhoneNumberTextField.h */,
+				2630A9BE21E5903800EA409D /* TLLimitPhoneNumberTextField.m */,
+				2630A9BF21E5903800EA409D /* TLTextView.h */,
+				2630A9BB21E5903800EA409D /* TLTextView.m */,
 			);
 			path = TLInputTool;
 			sourceTree = "<group>";
@@ -541,6 +548,8 @@
 		2630A9F421E5D2F800EA409D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2630A9F921E72F5E00EA409D /* HomeViewCell.h */,
+				2630A9FA21E72F5E00EA409D /* HomeViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -552,6 +561,15 @@
 				2630A9F721E6F8A000EA409D /* JXNavigationController.m */,
 			);
 			path = NavigationController;
+			sourceTree = "<group>";
+		};
+		2630A9FC21E730C100EA409D /* SaveTool */ = {
+			isa = PBXGroup;
+			children = (
+				2630A9FD21E730E500EA409D /* JXSaveTool.h */,
+				2630A9FE21E730E500EA409D /* JXSaveTool.m */,
+			);
+			path = SaveTool;
 			sourceTree = "<group>";
 		};
 		37123F7C024A409668779DA2 /* Frameworks */ = {
@@ -749,9 +767,11 @@
 				2630A9D321E5903800EA409D /* TLDrawViewToast.m in Sources */,
 				2630A96F21E58F9D00EA409D /* UIView+TLExtension.m in Sources */,
 				2630A97021E58F9D00EA409D /* UIBarButtonItem+TLExtension.m in Sources */,
+				2630A9FF21E730E500EA409D /* JXSaveTool.m in Sources */,
 				2630A9D121E5903800EA409D /* MMDrawerVisualState.m in Sources */,
 				2630A97421E58F9D00EA409D /* UIPickerView+TLExtension.m in Sources */,
 				2630A9D021E5903800EA409D /* MMDrawerController.m in Sources */,
+				2630A9FB21E72F5E00EA409D /* HomeViewCell.m in Sources */,
 				2630A9EE21E5C41300EA409D /* TLRootControllerTool.m in Sources */,
 				2630A9D221E5903800EA409D /* TLDrawViewControllerTool.m in Sources */,
 				2630A9CB21E5903800EA409D /* TLArchiverTool.m in Sources */,

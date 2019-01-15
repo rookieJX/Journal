@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewController.h"
+#import "HomeViewCell.h"
 
 @interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 /** 列表 */
@@ -31,6 +32,7 @@
 - (void)config_tableView {
     self.tableView                = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
     self.tableView.backgroundColor  = ColorBackground;
+    [self.tableView registerClass:[HomeViewCell class] forCellReuseIdentifier:NSStringFromClass([HomeViewCell class])];
     self.tableView.delegate       = self;
     self.tableView.dataSource     = self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -45,7 +47,8 @@
     return 0;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    HomeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HomeViewCell class]) forIndexPath:indexPath];
+    return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // Do Something
