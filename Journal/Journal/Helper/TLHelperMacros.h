@@ -25,6 +25,9 @@
 #pragma mark - 暂无数据
     #import "TLNoDataView.h"
 
+#pragma mark - 存储类
+    #import "JXSaveTool.h"
+
 
 /**
  设置中心

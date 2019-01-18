@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2614C32521EED62D00C00FB6 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2614C32121EED62D00C00FB6 /* libmp3lame.a */; };
+		2614C32621EED62D00C00FB6 /* mp3Encoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2614C32321EED62D00C00FB6 /* mp3Encoder.cpp */; };
 		2630A92821E5869300EA409D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2630A92721E5869300EA409D /* AppDelegate.m */; };
 		2630A93021E5869500EA409D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2630A92F21E5869500EA409D /* Assets.xcassets */; };
 		2630A93321E5869500EA409D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2630A93121E5869500EA409D /* LaunchScreen.storyboard */; };
 		2630A93621E5869500EA409D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2630A93521E5869500EA409D /* main.m */; };
 		2630A94021E5869500EA409D /* JournalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2630A93F21E5869500EA409D /* JournalTests.m */; };
-		2630A95121E58CE600EA409D /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2630A95021E58CE600EA409D /* HomeViewController.m */; };
+		2630A95121E58CE600EA409D /* HomeViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2630A95021E58CE600EA409D /* HomeViewController.mm */; };
 		2630A96D21E58F9D00EA409D /* NSObject+ToNSString.m in Sources */ = {isa = PBXBuildFile; fileRef = 2630A95B21E58F9D00EA409D /* NSObject+ToNSString.m */; };
 		2630A96E21E58F9D00EA409D /* NSArray+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2630A95D21E58F9D00EA409D /* NSArray+Extension.m */; };
 		2630A96F21E58F9D00EA409D /* UIView+TLExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 2630A95F21E58F9D00EA409D /* UIView+TLExtension.m */; };
@@ -69,6 +71,10 @@
 
 /* Begin PBXFileReference section */
 		25AEFD251E632C7C3A50BE8F /* Pods-Journal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Journal.release.xcconfig"; path = "Pods/Target Support Files/Pods-Journal/Pods-Journal.release.xcconfig"; sourceTree = "<group>"; };
+		2614C32021EED62D00C00FB6 /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
+		2614C32121EED62D00C00FB6 /* libmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmp3lame.a; sourceTree = "<group>"; };
+		2614C32321EED62D00C00FB6 /* mp3Encoder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp3Encoder.cpp; sourceTree = "<group>"; };
+		2614C32421EED62D00C00FB6 /* mp3Encoder.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp3Encoder.hpp; sourceTree = "<group>"; };
 		2630A92321E5869300EA409D /* Journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Journal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2630A92621E5869300EA409D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2630A92721E5869300EA409D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -80,7 +86,7 @@
 		2630A93F21E5869500EA409D /* JournalTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JournalTests.m; sourceTree = "<group>"; };
 		2630A94121E5869500EA409D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2630A94F21E58CE600EA409D /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
-		2630A95021E58CE600EA409D /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		2630A95021E58CE600EA409D /* HomeViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = HomeViewController.mm; sourceTree = "<group>"; };
 		2630A95221E58EB400EA409D /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		2630A95721E58F9C00EA409D /* ExtendToolHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendToolHeader.h; sourceTree = "<group>"; };
 		2630A95921E58F9D00EA409D /* UIResponder+TLExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+TLExtension.h"; sourceTree = "<group>"; };
@@ -179,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6A953C31FCCD1F68FB3CC0A /* libPods-Journal.a in Frameworks */,
+				2614C32521EED62D00C00FB6 /* libmp3lame.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +199,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2614C31C21EED62D00C00FB6 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				2614C31D21EED62D00C00FB6 /* Lame */,
+				2614C32221EED62D00C00FB6 /* Mp3Encoder */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		2614C31D21EED62D00C00FB6 /* Lame */ = {
+			isa = PBXGroup;
+			children = (
+				2614C31E21EED62D00C00FB6 /* include */,
+				2614C32121EED62D00C00FB6 /* libmp3lame.a */,
+			);
+			path = Lame;
+			sourceTree = "<group>";
+		};
+		2614C31E21EED62D00C00FB6 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				2614C31F21EED62D00C00FB6 /* lame */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		2614C31F21EED62D00C00FB6 /* lame */ = {
+			isa = PBXGroup;
+			children = (
+				2614C32021EED62D00C00FB6 /* lame.h */,
+			);
+			path = lame;
+			sourceTree = "<group>";
+		};
+		2614C32221EED62D00C00FB6 /* Mp3Encoder */ = {
+			isa = PBXGroup;
+			children = (
+				2614C32321EED62D00C00FB6 /* mp3Encoder.cpp */,
+				2614C32421EED62D00C00FB6 /* mp3Encoder.hpp */,
+			);
+			path = Mp3Encoder;
+			sourceTree = "<group>";
+		};
 		2630A91A21E5869300EA409D = {
 			isa = PBXGroup;
 			children = (
@@ -268,6 +318,7 @@
 		2630A94D21E58CD200EA409D /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				2614C31C21EED62D00C00FB6 /* Lib */,
 				2630A9F421E5D2F800EA409D /* View */,
 				2630A9F321E5D2F100EA409D /* Model */,
 				2630A94E21E58CD700EA409D /* Controller */,
@@ -279,7 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				2630A94F21E58CE600EA409D /* HomeViewController.h */,
-				2630A95021E58CE600EA409D /* HomeViewController.m */,
+				2630A95021E58CE600EA409D /* HomeViewController.mm */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -296,8 +347,8 @@
 		2630A95421E58F5100EA409D /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				2630A9FC21E730C100EA409D /* SaveTool */,
 				2630A99D21E5903400EA409D /* TLHelperMacros.h */,
+				2630A9FC21E730C100EA409D /* SaveTool */,
 				2630A98221E5903200EA409D /* APPInfoTool */,
 				2630A98521E5903200EA409D /* ArchiverTool */,
 				2630A9A421E5903500EA409D /* ControllerTool */,
@@ -749,6 +800,7 @@
 				2630A9D621E5903800EA409D /* TLMyControlTool.m in Sources */,
 				2630A9C421E5903800EA409D /* TLToastTool.m in Sources */,
 				2630A9CD21E5903800EA409D /* TLDateFormatter.m in Sources */,
+				2614C32621EED62D00C00FB6 /* mp3Encoder.cpp in Sources */,
 				2630A93621E5869500EA409D /* main.m in Sources */,
 				2630A96E21E58F9D00EA409D /* NSArray+Extension.m in Sources */,
 				2630A9D421E5903800EA409D /* TLDeviceTools.m in Sources */,
@@ -782,7 +834,7 @@
 				2630A9CE21E5903800EA409D /* MMDrawerBarButtonItem.m in Sources */,
 				2630A96D21E58F9D00EA409D /* NSObject+ToNSString.m in Sources */,
 				2630A9D721E5903800EA409D /* TLMyHUD.m in Sources */,
-				2630A95121E58CE600EA409D /* HomeViewController.m in Sources */,
+				2630A95121E58CE600EA409D /* HomeViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -942,6 +994,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Journal/ViewControllers/Home/Lib/Lame",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rookie.Journal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -961,6 +1017,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Journal/ViewControllers/Home/Lib/Lame",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rookie.Journal;
 				PRODUCT_NAME = "$(TARGET_NAME)";

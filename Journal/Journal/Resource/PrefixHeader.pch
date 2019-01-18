@@ -6,6 +6,8 @@
 //  Copyright © 2019 JX.Wang. All rights reserved.
 //
 
+#ifdef __OBJC__
+
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
@@ -24,3 +26,5 @@
 #pragma mark - 登录
 #import "TLMyControlTool.h"
 #endif /* PrefixHeader_pch */
+
+#endif

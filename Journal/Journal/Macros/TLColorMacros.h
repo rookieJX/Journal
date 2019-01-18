@@ -51,6 +51,14 @@
 #define TLHexColorValues(hex,a)    ([UIColor colorWithRed:((float)((hex & 0xFF0000) >> 16))/255.0 green:((float)((hex & 0xFF00) >> 8))/255.0 blue:((float)(hex & 0xFF))/255.0 alpha:a])
 
 /**
+ 白色
+ */
+#define ColorWhite                 TLRainColor(255,255,255)
+/**
+ #228B22 主题色
+ */
+#define ColorTheme                  TLHexColor(0x228B22)
+/**
  #999999 辅助、次要短文字
  */
 #define ColorGray2                  TLRainColor(153,153,153)

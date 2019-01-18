@@ -9,6 +9,24 @@
 #ifndef TLLayoutSizeMacros_h
 #define TLLayoutSizeMacros_h
 #pragma mark -----------------------------------------尺寸大小--------------------------------------------
+/**
+ 是否是X的设备（指的是屏幕尺寸）
+ */
+#define UI_IS_IPHONEX         (UI_IS_IPHONE && [[UIScreen mainScreen] bounds].size.height >= 812.0)
+
+/**
+ 底部TarBar高度
+ */
+#define UI_TABBAR_HEIGHT                (UI_IS_IPHONEX ? 83 : 49)
+/**
+ 状态栏高度
+ */
+#define UI_NAVIGATION_STATUSBAR_HEIGHT   (UI_IS_IPHONEX ? 44 : 20)
+
+/**
+ 导航栏高度
+ */
+#define UI_NAVIGATION_HEIGHT             (UI_IS_IPHONEX ? 88 : 64)
 
 /**
  屏幕的宽度
