@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "HomeViewCell.h"
+#import "HomeDetailViewController.h"
 
 @interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 /** 列表 */
@@ -91,7 +92,8 @@
 
 #pragma mark - Target
 - (void)actionForCreateButtonClick {
-    TL_CLog(@"点击创建");
+    HomeDetailViewController *detailController  = [[HomeDetailViewController alloc] init];
+    [self.navigationController pushViewController:detailController animated:YES];
 }
 #pragma mark - Lazy
 - (UILabel *)backVoiceMessageLabel{

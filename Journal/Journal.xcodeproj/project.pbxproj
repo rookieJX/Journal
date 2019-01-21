@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2614C32521EED62D00C00FB6 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2614C32121EED62D00C00FB6 /* libmp3lame.a */; };
 		2614C32621EED62D00C00FB6 /* mp3Encoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2614C32321EED62D00C00FB6 /* mp3Encoder.cpp */; };
+		2614C32921F1C0D800C00FB6 /* HomeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2614C32821F1C0D800C00FB6 /* HomeDetailViewController.m */; };
+		2614C32C21F1C25300C00FB6 /* HomeDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2614C32B21F1C25300C00FB6 /* HomeDetailView.m */; };
 		2630A92821E5869300EA409D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2630A92721E5869300EA409D /* AppDelegate.m */; };
 		2630A93021E5869500EA409D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2630A92F21E5869500EA409D /* Assets.xcassets */; };
 		2630A93321E5869500EA409D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2630A93121E5869500EA409D /* LaunchScreen.storyboard */; };
@@ -75,6 +77,10 @@
 		2614C32121EED62D00C00FB6 /* libmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmp3lame.a; sourceTree = "<group>"; };
 		2614C32321EED62D00C00FB6 /* mp3Encoder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp3Encoder.cpp; sourceTree = "<group>"; };
 		2614C32421EED62D00C00FB6 /* mp3Encoder.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp3Encoder.hpp; sourceTree = "<group>"; };
+		2614C32721F1C0D800C00FB6 /* HomeDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailViewController.h; sourceTree = "<group>"; };
+		2614C32821F1C0D800C00FB6 /* HomeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailViewController.m; sourceTree = "<group>"; };
+		2614C32A21F1C25300C00FB6 /* HomeDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailView.h; sourceTree = "<group>"; };
+		2614C32B21F1C25300C00FB6 /* HomeDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailView.m; sourceTree = "<group>"; };
 		2630A92321E5869300EA409D /* Journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Journal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2630A92621E5869300EA409D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2630A92721E5869300EA409D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -331,6 +337,8 @@
 			children = (
 				2630A94F21E58CE600EA409D /* HomeViewController.h */,
 				2630A95021E58CE600EA409D /* HomeViewController.mm */,
+				2614C32721F1C0D800C00FB6 /* HomeDetailViewController.h */,
+				2614C32821F1C0D800C00FB6 /* HomeDetailViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -601,6 +609,8 @@
 			children = (
 				2630A9F921E72F5E00EA409D /* HomeViewCell.h */,
 				2630A9FA21E72F5E00EA409D /* HomeViewCell.m */,
+				2614C32A21F1C25300C00FB6 /* HomeDetailView.h */,
+				2614C32B21F1C25300C00FB6 /* HomeDetailView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -796,6 +806,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2614C32C21F1C25300C00FB6 /* HomeDetailView.m in Sources */,
 				2630A97221E58F9D00EA409D /* UIResponder+TLExtension.m in Sources */,
 				2630A9D621E5903800EA409D /* TLMyControlTool.m in Sources */,
 				2630A9C421E5903800EA409D /* TLToastTool.m in Sources */,
@@ -804,6 +815,7 @@
 				2630A93621E5869500EA409D /* main.m in Sources */,
 				2630A96E21E58F9D00EA409D /* NSArray+Extension.m in Sources */,
 				2630A9D421E5903800EA409D /* TLDeviceTools.m in Sources */,
+				2614C32921F1C0D800C00FB6 /* HomeDetailViewController.m in Sources */,
 				2630A9DE21E5903800EA409D /* TLInPutView.m in Sources */,
 				2630A9CC21E5903800EA409D /* TLTimeButton.m in Sources */,
 				2630A97521E58F9D00EA409D /* UIButton+TLExtension.m in Sources */,
