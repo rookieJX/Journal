@@ -9,5 +9,5 @@
 #import "TLAppInfoManager.h"
 
 @implementation TLAppInfoManager
-singleton_m(TLAppInfoManager)
+singleton_implementation(TLAppInfoManager)
 @end

@@ -21,6 +21,9 @@
  */
 #define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 
+#define kStringIsEmpty(str) ([str isKindOfClass:[NSNull class]] || str == nil || [str length] < 1 ? YES : NO )
+
+
 /**
  开始照片的数据缓存路径
  */

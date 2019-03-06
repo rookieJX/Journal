@@ -10,7 +10,7 @@
 		2614C32521EED62D00C00FB6 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2614C32121EED62D00C00FB6 /* libmp3lame.a */; };
 		2614C32621EED62D00C00FB6 /* mp3Encoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2614C32321EED62D00C00FB6 /* mp3Encoder.cpp */; };
 		2614C32921F1C0D800C00FB6 /* HomeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2614C32821F1C0D800C00FB6 /* HomeDetailViewController.m */; };
-		2614C32C21F1C25300C00FB6 /* HomeDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2614C32B21F1C25300C00FB6 /* HomeDetailView.m */; };
+		2614C32C21F1C25300C00FB6 /* HomeDetailView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2614C32B21F1C25300C00FB6 /* HomeDetailView.mm */; };
 		2630A92821E5869300EA409D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2630A92721E5869300EA409D /* AppDelegate.m */; };
 		2630A93021E5869500EA409D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2630A92F21E5869500EA409D /* Assets.xcassets */; };
 		2630A93321E5869500EA409D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2630A93121E5869500EA409D /* LaunchScreen.storyboard */; };
@@ -58,6 +58,8 @@
 		2630A9F821E6F8A000EA409D /* JXNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2630A9F721E6F8A000EA409D /* JXNavigationController.m */; };
 		2630A9FB21E72F5E00EA409D /* HomeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2630A9FA21E72F5E00EA409D /* HomeViewCell.m */; };
 		2630A9FF21E730E500EA409D /* JXSaveTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2630A9FE21E730E500EA409D /* JXSaveTool.m */; };
+		26A02575222FA64C00320DB5 /* HomeSaveTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A02574222FA64C00320DB5 /* HomeSaveTool.m */; };
+		26A02578222FA76100320DB5 /* HomeRecordingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A02577222FA76100320DB5 /* HomeRecordingModel.m */; };
 		B6A953C31FCCD1F68FB3CC0A /* libPods-Journal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D097D9560C7475E218DC61D /* libPods-Journal.a */; };
 /* End PBXBuildFile section */
 
@@ -80,7 +82,7 @@
 		2614C32721F1C0D800C00FB6 /* HomeDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailViewController.h; sourceTree = "<group>"; };
 		2614C32821F1C0D800C00FB6 /* HomeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailViewController.m; sourceTree = "<group>"; };
 		2614C32A21F1C25300C00FB6 /* HomeDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailView.h; sourceTree = "<group>"; };
-		2614C32B21F1C25300C00FB6 /* HomeDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailView.m; sourceTree = "<group>"; };
+		2614C32B21F1C25300C00FB6 /* HomeDetailView.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = HomeDetailView.mm; sourceTree = "<group>"; };
 		2630A92321E5869300EA409D /* Journal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Journal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2630A92621E5869300EA409D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2630A92721E5869300EA409D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -181,6 +183,10 @@
 		2630A9FA21E72F5E00EA409D /* HomeViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewCell.m; sourceTree = "<group>"; };
 		2630A9FD21E730E500EA409D /* JXSaveTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXSaveTool.h; sourceTree = "<group>"; };
 		2630A9FE21E730E500EA409D /* JXSaveTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXSaveTool.m; sourceTree = "<group>"; };
+		26A02573222FA64C00320DB5 /* HomeSaveTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSaveTool.h; sourceTree = "<group>"; };
+		26A02574222FA64C00320DB5 /* HomeSaveTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeSaveTool.m; sourceTree = "<group>"; };
+		26A02576222FA76100320DB5 /* HomeRecordingModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeRecordingModel.h; sourceTree = "<group>"; };
+		26A02577222FA76100320DB5 /* HomeRecordingModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeRecordingModel.m; sourceTree = "<group>"; };
 		3D097D9560C7475E218DC61D /* libPods-Journal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Journal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		941A4742B4A3180250A6132A /* Pods-Journal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Journal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Journal/Pods-Journal.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -324,6 +330,7 @@
 		2630A94D21E58CD200EA409D /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				26A02572222FA62800320DB5 /* Tools */,
 				2614C31C21EED62D00C00FB6 /* Lib */,
 				2630A9F421E5D2F800EA409D /* View */,
 				2630A9F321E5D2F100EA409D /* Model */,
@@ -600,6 +607,8 @@
 		2630A9F321E5D2F100EA409D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				26A02576222FA76100320DB5 /* HomeRecordingModel.h */,
+				26A02577222FA76100320DB5 /* HomeRecordingModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -610,7 +619,7 @@
 				2630A9F921E72F5E00EA409D /* HomeViewCell.h */,
 				2630A9FA21E72F5E00EA409D /* HomeViewCell.m */,
 				2614C32A21F1C25300C00FB6 /* HomeDetailView.h */,
-				2614C32B21F1C25300C00FB6 /* HomeDetailView.m */,
+				2614C32B21F1C25300C00FB6 /* HomeDetailView.mm */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -631,6 +640,15 @@
 				2630A9FE21E730E500EA409D /* JXSaveTool.m */,
 			);
 			path = SaveTool;
+			sourceTree = "<group>";
+		};
+		26A02572222FA62800320DB5 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				26A02573222FA64C00320DB5 /* HomeSaveTool.h */,
+				26A02574222FA64C00320DB5 /* HomeSaveTool.m */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 		37123F7C024A409668779DA2 /* Frameworks */ = {
@@ -806,8 +824,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2614C32C21F1C25300C00FB6 /* HomeDetailView.m in Sources */,
+				2614C32C21F1C25300C00FB6 /* HomeDetailView.mm in Sources */,
 				2630A97221E58F9D00EA409D /* UIResponder+TLExtension.m in Sources */,
+				26A02578222FA76100320DB5 /* HomeRecordingModel.m in Sources */,
 				2630A9D621E5903800EA409D /* TLMyControlTool.m in Sources */,
 				2630A9C421E5903800EA409D /* TLToastTool.m in Sources */,
 				2630A9CD21E5903800EA409D /* TLDateFormatter.m in Sources */,
@@ -843,6 +862,7 @@
 				2630A9DF21E5903800EA409D /* TLLimitPhoneNumberTextField.m in Sources */,
 				2630A97621E58F9D00EA409D /* NSAttributedString+TLCustomAttributedString.m in Sources */,
 				2630A97321E58F9D00EA409D /* UIImage+TLExtension.m in Sources */,
+				26A02575222FA64C00320DB5 /* HomeSaveTool.m in Sources */,
 				2630A9CE21E5903800EA409D /* MMDrawerBarButtonItem.m in Sources */,
 				2630A96D21E58F9D00EA409D /* NSObject+ToNSString.m in Sources */,
 				2630A9D721E5903800EA409D /* TLMyHUD.m in Sources */,
@@ -999,6 +1019,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6F399U28WY;
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Journal/Resource/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Journal/Resource/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1013,6 +1034,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rookie.Journal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = arm64;
 			};
 			name = Debug;
 		};
@@ -1023,6 +1045,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6F399U28WY;
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Journal/Resource/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Journal/Resource/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -1037,6 +1060,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rookie.Journal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = arm64;
 			};
 			name = Release;
 		};

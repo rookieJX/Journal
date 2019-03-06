@@ -23,6 +23,11 @@
 
 @implementation HomeViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self config_data];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -39,7 +44,7 @@
 }
 
 - (void)config_tableView {
-    self.tableView                = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-UI_NAVIGATION_HEIGHT) style:UITableViewStyleGrouped];
+    self.tableView                = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-UI_NAVIGATION_HEIGHT-UI_TABBAR_HEIGHT) style:UITableViewStyleGrouped];
     self.tableView.backgroundColor  = ColorBackground;
     [self.tableView registerClass:[HomeViewCell class] forCellReuseIdentifier:NSStringFromClass([HomeViewCell class])];
     self.tableView.delegate       = self;
@@ -54,12 +59,18 @@
         make.height.mas_equalTo(@(UI_TABBAR_HEIGHT));
     }];
 }
+
+- (void)config_data {
+    self.voicesListsArray = [HOME_RECORDING_CACHE getHomeRecordingModelCache];
+    TL_CLog(@"当前目录：%ld",self.voicesListsArray.count);
+    [self.tableView reloadData];
+}
 #pragma mark - UITableViewDelegate && DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     NSInteger count = self.voicesListsArray.count;
     self.backVoiceMessageLabel.hidden   = count;
     self.tableView.hidden               = !count;
-    return 0;
+    return count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
@@ -73,12 +84,12 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 44.0f;
+    return 100.0f;
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 0.001f;
+    return 10.0f;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 0.001f;

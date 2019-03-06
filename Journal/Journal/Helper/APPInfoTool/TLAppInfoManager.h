@@ -10,6 +10,6 @@
 #import <Reachability.h>
 #import "TLSingleton.h"
 @interface TLAppInfoManager : NSObject
-singleton_h(TLAppInfoManager)
+singleton_interface(TLAppInfoManager)
 @property(nonatomic,strong)Reachability * netReachablity;
 @end

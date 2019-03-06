@@ -5,6 +5,7 @@ PODS:
   - MJRefresh (3.1.15.1)
   - Reachability (3.2)
   - Toast (3.1.0)
+  - YYModel (1.0.4)
 
 DEPENDENCIES:
   - IQKeyboardManager
@@ -13,6 +14,7 @@ DEPENDENCIES:
   - MJRefresh (~> 3.1.12)
   - Reachability (~> 3.2)
   - Toast (~> 3.1.0)
+  - YYModel
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -22,6 +24,7 @@ SPEC REPOS:
     - MJRefresh
     - Reachability
     - Toast
+    - YYModel
 
 SPEC CHECKSUMS:
   IQKeyboardManager: 0bfa4607d39924116b5c0c8b55b5d789288b5cba
@@ -30,7 +33,8 @@ SPEC CHECKSUMS:
   MJRefresh: 5f8552bc25ca8751c010f621c1098dbdaacbccd6
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   Toast: 14a93686d6c8bfe2727afd342414e35660a8a1f3
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 9a7facd18c83b5335886143068d4a15a3fe2b92a
+PODFILE CHECKSUM: 1347fc83d5673a7bd48a07f50d6ae8a48dc2f209
 
 COCOAPODS: 1.5.3

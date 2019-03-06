@@ -7,10 +7,15 @@
 //
 
 #import "HomeDetailView.h"
+#import <AVFoundation/AVFoundation.h>
+#import "HomeRecordingModel.h"
 
+
+static NSString *const AACSaveFilePath = @"Recording.aac";
+#define sampleRate 44100
 #define kRecordingTitleLength 16
 
-@interface HomeDetailView ()
+@interface HomeDetailView ()<AVAudioRecorderDelegate>
 /** 输入标题 */
 @property (nonatomic,strong) UITextField * titleTextField;
 /** 统计数字 */
@@ -23,6 +28,15 @@
 @property (nonatomic,strong) UIButton * saveButton;
 /** 暂停按钮 */
 @property (nonatomic,strong) UIButton * pauseButton;
+#pragma mark - 录音相关参数
+@property (nonatomic,strong) NSTimer *recordTimer;
+/** 录音时间（单位：s） */
+@property (nonatomic,assign) NSInteger totalRecordingSeconds;
+@property (nonatomic,strong) AVAudioRecorder *audioRecorder;
+/** 列表 */
+@property (nonatomic,strong) NSMutableArray * saveRecordingArrays;
+/** 当前录音模型 */
+@property (nonatomic,strong) HomeRecordingModel * currentRecordingModel;
 @end
 
 @implementation HomeDetailView
@@ -33,6 +47,7 @@
     if (self) {
         [self config_init];
         [self config_layout];
+    
     }
     return self;
 }
@@ -40,6 +55,10 @@
 #pragma mark - Init
 - (void)config_init {
     self.backgroundColor    = TLRainColor(242, 250, 252);
+    self.totalRecordingSeconds = 0;
+    self.saveRecordingArrays    = @[].mutableCopy;
+    NSArray *currentArrays = [HOME_RECORDING_CACHE getHomeRecordingModelCache];
+    if(currentArrays.count) [self.saveRecordingArrays addObjectsFromArray:currentArrays];
 }
 #pragma mark - Layout
 - (void)config_layout {
@@ -95,7 +114,8 @@
 #pragma mark - Target
 - (void)actionForSaveButtonClick {
     self.pauseButton.selected   = NO;
-    TL_CLog(@"保存录音");
+    [self stopRecording];
+    
 }
 
 - (void)actionForPauseButtonClick:(UIButton *)sender {
@@ -130,27 +150,100 @@
 }
 
 #pragma mark - Public Meth
-//- (void)recordingNotepadViewActionForSave {
-//    self.pauseButton.selected   = NO;
-//    TL_CLog(@"保存录音");
-//
-//}
-//
-//- (void)recordingNotepadViewActionForPause {
-//    self.pauseButton.selected   = NO;
-//    [self privateRecordingStatus];
-//}
-//
-//- (void)recordingNotepadViewActionForStart {
-//    self.pauseButton.selected   = YES;
-//    [self privateRecordingStatus];
-//}
+/**
+ 开始录音
+ */
+- (void)actionForHomeDetailViewStartRecording {
+    self.pauseButton.selected   = YES;
+    [self privateRecordingStatus];
+}
+
+/**
+ 暂停录音
+ */
+- (void)actionForHomeDetailViewPauseRecording {
+    self.pauseButton.selected   = NO;
+    [self privateRecordingStatus];
+}
+
+#pragma mark - 录音相关
+#pragma mark 开始录音
+- (void)startRecording {
+    [self startRecordTimer];
+    [self startRecordPlayer];
+}
+
+
+// 开始定时器
+- (void)startRecordTimer {
+    if (!self.recordTimer) {
+        self.recordTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(actionForRecordTimerAction) userInfo:nil repeats:YES];
+        [self.recordTimer setFireDate:[NSDate distantPast]];
+        [[NSRunLoop currentRunLoop] addTimer:self.recordTimer forMode:NSRunLoopCommonModes];
+    }
+}
+
+
+// 开始录音
+- (void)startRecordPlayer {
+    
+    if (![self.audioRecorder isRecording]) {
+        [self.audioRecorder record];
+    }
+    
+}
+
+#pragma mark 暂停录音
+- (void)pauseRecording {
+    [self pauseRecordTimer];
+    [self pauseRecordPlayer];
+}
+
+
+// 暂停定时器
+- (void)pauseRecordTimer {
+    if (self.recordTimer) {
+        [self.recordTimer invalidate];
+        self.recordTimer = nil;
+    }
+}
+
+// 暂停录音
+- (void)pauseRecordPlayer {
+    if ([self.audioRecorder isRecording]) {
+        [self.audioRecorder pause];
+    }
+    
+}
+
+#pragma mark 结束录音
+- (void)stopRecording {
+    [self stopRecordTimer];
+    
+    [self stopRecordPlayer];
+    // 保存录音按钮
+    [self getAACDataSource];
+}
+
+// 结束定时器
+- (void)stopRecordTimer {
+    [self pauseRecordTimer];
+}
+
+// 结束录音
+- (void)stopRecordPlayer {
+    [self.audioRecorder stop];
+}
+#pragma mark - Target
+- (void)actionForRecordTimerAction {
+    self.totalRecordingSeconds += 1;
+    
+    self.recordingTimeLabel.text    = [self getFormatString:self.totalRecordingSeconds];
+}
 
 #pragma mark - Private Meth
 - (void)feedbackStringWithMessage:(NSString *)message {
     self.titleCountLabel.text   = [NSString stringWithFormat:@"%ld/16",message.length];
-    
-    
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -158,13 +251,36 @@
 }
 - (void)privateRecordingStatus {
     if (self.pauseButton.isSelected) { // 开始录音
-        TL_CLog(@"开始录音");
-        
+        [self startRecording];
     } else { // 暂停录音
-        TL_CLog(@"暂停录音");
+        [self pauseRecording];
         
     }
 }
+
+#pragma mark - Getter
+- (void)getAACDataSource {
+    
+    NSString *folderPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject] stringByAppendingPathComponent:AACSaveFilePath];
+    if (!kStringIsEmpty(folderPath)) {
+        TL_CLog(@"文件保存地址：%@",folderPath);
+        self.currentRecordingModel = [[HomeRecordingModel alloc] init];
+        self.currentRecordingModel.filePath = folderPath;
+        self.currentRecordingModel.time     = self.totalRecordingSeconds;
+        self.currentRecordingModel.title = kStringIsEmpty(self.titleTextField.text) ? [self getCurrentSavingTitle] : self.titleTextField.text;
+        [self uploadRecordingFile];
+    }
+}
+
+// 上传文件
+- (void)uploadRecordingFile {
+    [self.saveRecordingArrays addObject:self.currentRecordingModel];
+    [HOME_RECORDING_CACHE setHomeRecrodingModelCache:self.saveRecordingArrays];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(actionForHomeDetailViewSave:)]) {
+        [self.delegate actionForHomeDetailViewSave:self];
+    }
+}
+
 #pragma mark - Lazy Loading
 - (UITextField *)titleTextField{
     if (_titleTextField == nil) {
@@ -240,7 +356,63 @@
 }
 
 
+- (AVAudioRecorder *)audioRecorder{
+    if (!_audioRecorder) {
+        AVAudioSession *session = [AVAudioSession sharedInstance];
+        [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+        [session setActive:YES error:nil];
+        
+        //创建录音文件保存路径
+        NSURL *url                     = [self getAACPath];
+        //创建录音参数
+        NSDictionary *setting          = [self getAudioSetting];
+        NSError *error                 = nil;
+        _audioRecorder                 = [[AVAudioRecorder alloc]initWithURL:url settings:setting error:&error];
+        _audioRecorder.delegate        = self;
+        _audioRecorder.meteringEnabled = YES;
+        [_audioRecorder prepareToRecord];
+        if (error) {
+            NSLog(@"创建AVAudioRecorder Error：%@",error.localizedDescription);
+            return nil;
+        }
+    }
+    return _audioRecorder;
+}
 
+- (NSURL *)getAACPath {
+    NSString *folderPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject] stringByAppendingPathComponent:AACSaveFilePath];
+    NSURL *url=[NSURL fileURLWithPath:folderPath];
+    return url;
+}
+
+
+/**
+ *  录音参数设置
+ */
+- (NSDictionary *)getAudioSetting{
+    NSMutableDictionary *dicM = [NSMutableDictionary dictionary];
+    [dicM setObject:@(kAudioFormatMPEG4AAC) forKey:AVFormatIDKey];
+    [dicM setObject:@(sampleRate) forKey:AVSampleRateKey]; //44.1khz的采样率
+    [dicM setObject:@(2) forKey:AVNumberOfChannelsKey];
+    [dicM setObject:@(16) forKey:AVLinearPCMBitDepthKey]; //16bit的PCM数据
+    [dicM setObject:[NSNumber numberWithInt:AVAudioQualityMax] forKey:AVEncoderAudioQualityKey];
+    return dicM;
+}
+
+
+/**
+ 获取当前保存默认标题
+ 
+ @return 保存后的默认标题
+ */
+- (NSString *)getCurrentSavingTitle {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"YYYYMMddHHmmss"];
+    NSDate *datenow = [NSDate date];
+    NSString *currentTimeString = [formatter stringFromDate:datenow];
+    return [NSString stringWithFormat:@"无标题笔记%@",currentTimeString];
+    
+}
 - (void)dealloc
 {
     TL_CLog(@"释放语音记事本");
