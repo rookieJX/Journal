@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2606682A2230F9D50067004C /* HomePlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 260668292230F9D50067004C /* HomePlayViewController.m */; };
+		2606682D223116500067004C /* AudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2606682C223116500067004C /* AudioRecorder.m */; };
+		2606682F223116880067004C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2606682E223116880067004C /* AVFoundation.framework */; };
+		26066831223116940067004C /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26066830223116940067004C /* AudioToolbox.framework */; };
 		2614C32521EED62D00C00FB6 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2614C32121EED62D00C00FB6 /* libmp3lame.a */; };
 		2614C32621EED62D00C00FB6 /* mp3Encoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2614C32321EED62D00C00FB6 /* mp3Encoder.cpp */; };
 		2614C32921F1C0D800C00FB6 /* HomeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2614C32821F1C0D800C00FB6 /* HomeDetailViewController.m */; };
@@ -75,6 +79,12 @@
 
 /* Begin PBXFileReference section */
 		25AEFD251E632C7C3A50BE8F /* Pods-Journal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Journal.release.xcconfig"; path = "Pods/Target Support Files/Pods-Journal/Pods-Journal.release.xcconfig"; sourceTree = "<group>"; };
+		260668282230F9D50067004C /* HomePlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomePlayViewController.h; sourceTree = "<group>"; };
+		260668292230F9D50067004C /* HomePlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomePlayViewController.m; sourceTree = "<group>"; };
+		2606682B223116500067004C /* AudioRecorder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioRecorder.h; sourceTree = "<group>"; };
+		2606682C223116500067004C /* AudioRecorder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudioRecorder.m; sourceTree = "<group>"; };
+		2606682E223116880067004C /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		26066830223116940067004C /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		2614C32021EED62D00C00FB6 /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
 		2614C32121EED62D00C00FB6 /* libmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmp3lame.a; sourceTree = "<group>"; };
 		2614C32321EED62D00C00FB6 /* mp3Encoder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp3Encoder.cpp; sourceTree = "<group>"; };
@@ -196,6 +206,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26066831223116940067004C /* AudioToolbox.framework in Frameworks */,
+				2606682F223116880067004C /* AVFoundation.framework in Frameworks */,
 				B6A953C31FCCD1F68FB3CC0A /* libPods-Journal.a in Frameworks */,
 				2614C32521EED62D00C00FB6 /* libmp3lame.a in Frameworks */,
 			);
@@ -346,6 +358,8 @@
 				2630A95021E58CE600EA409D /* HomeViewController.mm */,
 				2614C32721F1C0D800C00FB6 /* HomeDetailViewController.h */,
 				2614C32821F1C0D800C00FB6 /* HomeDetailViewController.m */,
+				260668282230F9D50067004C /* HomePlayViewController.h */,
+				260668292230F9D50067004C /* HomePlayViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -647,6 +661,8 @@
 			children = (
 				26A02573222FA64C00320DB5 /* HomeSaveTool.h */,
 				26A02574222FA64C00320DB5 /* HomeSaveTool.m */,
+				2606682B223116500067004C /* AudioRecorder.h */,
+				2606682C223116500067004C /* AudioRecorder.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -654,6 +670,8 @@
 		37123F7C024A409668779DA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				26066830223116940067004C /* AudioToolbox.framework */,
+				2606682E223116880067004C /* AVFoundation.framework */,
 				3D097D9560C7475E218DC61D /* libPods-Journal.a */,
 			);
 			name = Frameworks;
@@ -833,6 +851,7 @@
 				2614C32621EED62D00C00FB6 /* mp3Encoder.cpp in Sources */,
 				2630A93621E5869500EA409D /* main.m in Sources */,
 				2630A96E21E58F9D00EA409D /* NSArray+Extension.m in Sources */,
+				2606682A2230F9D50067004C /* HomePlayViewController.m in Sources */,
 				2630A9D421E5903800EA409D /* TLDeviceTools.m in Sources */,
 				2614C32921F1C0D800C00FB6 /* HomeDetailViewController.m in Sources */,
 				2630A9DE21E5903800EA409D /* TLInPutView.m in Sources */,
@@ -843,6 +862,7 @@
 				2630A9C921E5903800EA409D /* TLNoDataView.m in Sources */,
 				2630A9F821E6F8A000EA409D /* JXNavigationController.m in Sources */,
 				2630A9CF21E5903800EA409D /* UIViewController+MMDrawerController.m in Sources */,
+				2606682D223116500067004C /* AudioRecorder.m in Sources */,
 				2630A9F221E5C4EB00EA409D /* TLDeviceSettingInfoManger.m in Sources */,
 				2630A9DD21E5903800EA409D /* TLTextView.m in Sources */,
 				2630A97121E58F9D00EA409D /* NSDictionary+Extension.m in Sources */,

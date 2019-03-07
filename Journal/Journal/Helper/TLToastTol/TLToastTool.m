@@ -35,7 +35,7 @@
     CSToastStyle *tyle = [[CSToastStyle alloc] initWithDefaultStyle];
     tyle.backgroundColor = TLRGBAColor(10, 10, 10, 0.6);
     tyle.messageFont       = FONT_14;
-    [TL_Winow makeToast:message duration:0.5 position:CSToastPositionCenter style:tyle];
+    [TL_Winow makeToast:message duration:2 position:CSToastPositionCenter style:tyle];
 }
 
 #pragma mark - PublicMeth

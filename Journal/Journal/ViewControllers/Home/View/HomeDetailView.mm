@@ -9,13 +9,15 @@
 #import "HomeDetailView.h"
 #import <AVFoundation/AVFoundation.h>
 #import "HomeRecordingModel.h"
-
+#import "AudioRecorder.h"
 
 static NSString *const AACSaveFilePath = @"Recording.aac";
 #define sampleRate 44100
 #define kRecordingTitleLength 16
 
 @interface HomeDetailView ()<AVAudioRecorderDelegate>
+/** 地址 */
+@property (nonatomic,strong) NSString * filePath;
 /** 输入标题 */
 @property (nonatomic,strong) UITextField * titleTextField;
 /** 统计数字 */
@@ -54,10 +56,10 @@ static NSString *const AACSaveFilePath = @"Recording.aac";
 
 #pragma mark - Init
 - (void)config_init {
-    self.backgroundColor    = TLRainColor(242, 250, 252);
+    self.backgroundColor       = TLRainColor(242, 250, 252);
     self.totalRecordingSeconds = 0;
-    self.saveRecordingArrays    = @[].mutableCopy;
-    NSArray *currentArrays = [HOME_RECORDING_CACHE getHomeRecordingModelCache];
+    self.saveRecordingArrays   = @[].mutableCopy;
+    NSArray *currentArrays     = [HOME_RECORDING_CACHE getHomeRecordingModelCache];
     if(currentArrays.count) [self.saveRecordingArrays addObjectsFromArray:currentArrays];
 }
 #pragma mark - Layout
@@ -261,13 +263,13 @@ static NSString *const AACSaveFilePath = @"Recording.aac";
 #pragma mark - Getter
 - (void)getAACDataSource {
     
-    NSString *folderPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject] stringByAppendingPathComponent:AACSaveFilePath];
+    NSString *folderPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.aac",[self getCurrentSavingTitle]]];
     if (!kStringIsEmpty(folderPath)) {
         TL_CLog(@"文件保存地址：%@",folderPath);
         self.currentRecordingModel = [[HomeRecordingModel alloc] init];
         self.currentRecordingModel.filePath = folderPath;
         self.currentRecordingModel.time     = self.totalRecordingSeconds;
-        self.currentRecordingModel.title = kStringIsEmpty(self.titleTextField.text) ? [self getCurrentSavingTitle] : self.titleTextField.text;
+        self.currentRecordingModel.title = kStringIsEmpty(self.titleTextField.text) ? [NSString stringWithFormat:@"默认标题%@",[self getCurrentSavingTitle]] : self.titleTextField.text;
         [self uploadRecordingFile];
     }
 }
@@ -380,7 +382,7 @@ static NSString *const AACSaveFilePath = @"Recording.aac";
 }
 
 - (NSURL *)getAACPath {
-    NSString *folderPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject] stringByAppendingPathComponent:AACSaveFilePath];
+    NSString *folderPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.aac",[self getCurrentSavingTitle]]];
     NSURL *url=[NSURL fileURLWithPath:folderPath];
     return url;
 }
@@ -410,12 +412,41 @@ static NSString *const AACSaveFilePath = @"Recording.aac";
     [formatter setDateFormat:@"YYYYMMddHHmmss"];
     NSDate *datenow = [NSDate date];
     NSString *currentTimeString = [formatter stringFromDate:datenow];
-    return [NSString stringWithFormat:@"无标题笔记%@",currentTimeString];
+    return currentTimeString;
     
 }
 - (void)dealloc
 {
     TL_CLog(@"释放语音记事本");
+}
+
+
+
+
+
+// 开始录音
+- (void)startRecorder
+{
+    self.filePath = GetFilePathWithDate();
+    [[AudioRecorder shareManager] audioRecorderStartWithFilePath:self.filePath];
+}
+
+// 停止录音，并保存
+- (void)saveRecorder
+{
+    [[AudioRecorder shareManager] audioRecorderStop];
+}
+
+// 录音开始播放，或停止
+- (void)playRecorder
+{
+    [[AudioRecorder shareManager] audioPlayWithFilePath:self.filePath];
+}
+
+// 录音停止播放
+- (void)stopRecorder
+{
+    [[AudioRecorder shareManager] audioStop];
 }
 
 @end

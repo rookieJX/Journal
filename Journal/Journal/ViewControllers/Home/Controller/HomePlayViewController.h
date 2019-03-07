@@ -1,8 +1,8 @@
 //
-//  HomeViewCell.h
+//  HomePlayViewController.h
 //  Journal
 //
-//  Created by 王加祥 on 2019/1/10.
+//  Created by 王加祥 on 2019/3/7.
 //  Copyright © 2019 JX.Wang. All rights reserved.
 //
 
@@ -11,11 +11,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HomeViewCell : UITableViewCell
-
-/** 模型 */
+@interface HomePlayViewController : UIViewController
+/** 当前播放模型 */
 @property (nonatomic,strong) HomeRecordingModel * recordingModel;
-
 @end
 
 NS_ASSUME_NONNULL_END

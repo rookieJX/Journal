@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "HomeViewCell.h"
 #import "HomeDetailViewController.h"
+#import "HomePlayViewController.h"
 
 @interface HomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 /** 列表 */
@@ -76,15 +77,20 @@
     return 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    HomeRecordingModel *model = self.voicesListsArray[indexPath.section];
     HomeViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HomeViewCell class]) forIndexPath:indexPath];
+    cell.recordingModel = model;
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Do Something
+    HomeRecordingModel *model = self.voicesListsArray[indexPath.section];
+    HomePlayViewController *playController = [[HomePlayViewController alloc] init];
+    playController.recordingModel   = model;
+    [self.navigationController pushViewController:playController animated:YES];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 100.0f;
+    return 50.0f;
 }
 
 
@@ -101,6 +107,27 @@
     return nil;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+    
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        NSMutableArray *sourceArray = [NSMutableArray arrayWithArray:self.voicesListsArray];
+        [sourceArray removeObjectAtIndex:indexPath.section];
+        [HOME_RECORDING_CACHE setHomeRecrodingModelCache:sourceArray];
+        self.voicesListsArray = [HOME_RECORDING_CACHE getHomeRecordingModelCache];
+        [self.tableView reloadData];
+    }
+}
+    
 #pragma mark - Target
 - (void)actionForCreateButtonClick {
     HomeDetailViewController *detailController  = [[HomeDetailViewController alloc] init];
