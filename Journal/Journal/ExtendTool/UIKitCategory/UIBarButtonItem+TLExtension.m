@@ -47,14 +47,14 @@
             forState:UIControlStateNormal];
     
     // 创建正常状态下的文字
-    [button setTitleColor:[UIColor whiteColor]
+    [button setTitleColor:[UIColor blackColor]
                  forState:UIControlStateNormal];
     
     // 正常状态下的文字尺寸
     button.titleLabel.font = [UIFont systemFontOfSize:14];
     
     // 选中状态下的文字颜色
-    [button setTitleColor:[UIColor whiteColor]
+    [button setTitleColor:[UIColor lightGrayColor]
                  forState:UIControlStateHighlighted];
     
     // 禁用状态下的文字颜色

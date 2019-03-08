@@ -7,15 +7,18 @@
 //
 
 #import "HomePlayViewController.h"
-#import <AVFoundation/AVFoundation.h>
+#import "AudioRecorder.h"
 
-@interface HomePlayViewController ()<AVAudioPlayerDelegate>
+
+@interface HomePlayViewController ()
 /** 标题 */
 @property (nonatomic,strong) UILabel * titleLabel;
 /** 时间 */
 @property (nonatomic,strong) UILabel * timeLabel;
 /** 播放进度条 */
 @property (nonatomic,strong) UIProgressView * playProgressView;
+@property (nonatomic,strong) NSTimer *recordTimer;
+@property (nonatomic,assign) NSTimeInterval totalRecordingSeconds;
 @end
 
 @implementation HomePlayViewController
@@ -35,18 +38,25 @@
     self.navigationItem.title   = @"播放语音";
     
     self.view.backgroundColor   = ColorBackground;
+    
+    // 设置push到的控制器的默认的导航按钮
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImageName:@"navigationbar_back"
+                                                                           highImageName:@"navigationbar_back_highlighted"
+                                                                                  target:self
+                                                                                  action:@selector(back)];
 }
 
 - (void)config_data {
     self.titleLabel.text = [NSString stringWithFormat:@"语音标题\n\n%@",self.recordingModel.title];
-    self.timeLabel.text  = [NSString stringWithFormat:@"语音时长\n\n%@",[self getFormatString:self.recordingModel.time]];
+    self.timeLabel.text  = [NSString stringWithFormat:@"语音时长\n\n%.0lf s",self.recordingModel.time];
     
     if (kStringIsEmpty(self.recordingModel.filePath) ) {
         [TLToastTool showMessage:@"语音播放失败"];
         return;
     }
     
-    
+    [[AudioRecorder shareManager] audioPlayWithFilePath:self.recordingModel.filePath];
+    [self startRecordTimer];
 }
 
 
@@ -79,6 +89,33 @@
     return [NSString stringWithFormat:@"%02ld:%02ld:%02ld",(long)hours, (long)minutes, (long)seconds];
 }
 
+- (void)back {
+    [[AudioRecorder shareManager] audioStop];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+// 开始定时器
+- (void)startRecordTimer {
+    
+    self.totalRecordingSeconds  = 0.0f;
+    CADisplayLink *displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(actionForRecordTimerAction:)];
+    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+}
+
+- (void)actionForRecordTimerAction:(CADisplayLink *)displaylink {
+    TL_CLog(@"当前时间：%lf--%lf--%ld",displaylink.timestamp,displaylink.duration,displaylink.preferredFramesPerSecond);
+    
+    if (self.totalRecordingSeconds >= self.recordingModel.time) {
+        [displaylink invalidate];
+        
+        displaylink = nil;
+    } else {
+        CGFloat rate = self.totalRecordingSeconds / self.recordingModel.time;
+        TL_CLog(@"当前比例：%lf---%lf",rate,self.recordingModel.time);
+        self.playProgressView.progress  = rate;
+    }
+    self.totalRecordingSeconds += 0.017;
+}
 #pragma mark - Lazy Loading
 
 - (UILabel *)titleLabel{

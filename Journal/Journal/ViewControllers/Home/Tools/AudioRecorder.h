@@ -10,6 +10,21 @@
 
 @interface AudioRecorder : NSObject
 
+#pragma mark - 文件操作
+
+/// 录音文件保存路径
+- (NSString *)GetFilePathWithDate;
+
+/// 获取文件名（包含后缀，如：xxx.acc；不包含文件类型，如xxx）
+- (NSString *)GetFileNameWithFilePath:(NSString *)filePath hasFileType:(BOOL)hasFileType;
+
+/// 获取文件大小
+- (NSInteger)GetFileSizeWithFilePath:(NSString *)filePath;
+
+/// 删除文件
+- (void)DeleteFileWithFilePath:(NSString *)filePath;
+
+
 #pragma mark - 录音
 
 /// 实例化单例
@@ -35,4 +50,3 @@
 - (void)audioStop;
 
 @end
-

@@ -11,7 +11,6 @@
 #import "HomeRecordingModel.h"
 #import "AudioRecorder.h"
 
-static NSString *const AACSaveFilePath = @"Recording.aac";
 #define sampleRate 44100
 #define kRecordingTitleLength 16
 
@@ -172,7 +171,7 @@ static NSString *const AACSaveFilePath = @"Recording.aac";
 #pragma mark 开始录音
 - (void)startRecording {
     [self startRecordTimer];
-    [self startRecordPlayer];
+    [self startRecorder];
 }
 
 
@@ -186,14 +185,14 @@ static NSString *const AACSaveFilePath = @"Recording.aac";
 }
 
 
-// 开始录音
-- (void)startRecordPlayer {
-    
-    if (![self.audioRecorder isRecording]) {
-        [self.audioRecorder record];
-    }
-    
-}
+//// 开始录音
+//- (void)startRecordPlayer {
+//
+//    if (![self.audioRecorder isRecording]) {
+//        [self.audioRecorder record];
+//    }
+//
+//}
 
 #pragma mark 暂停录音
 - (void)pauseRecording {
@@ -427,7 +426,7 @@ static NSString *const AACSaveFilePath = @"Recording.aac";
 // 开始录音
 - (void)startRecorder
 {
-    self.filePath = GetFilePathWithDate();
+    self.filePath = [[AudioRecorder shareManager] GetFilePathWithDate];
     [[AudioRecorder shareManager] audioRecorderStartWithFilePath:self.filePath];
 }
 

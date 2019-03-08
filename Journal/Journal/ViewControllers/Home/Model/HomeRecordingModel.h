@@ -14,7 +14,7 @@
 /** 标题 */
 @property (nonatomic,strong) NSString * title;
 /** 时间 */
-@property (nonatomic,assign) NSInteger time;
+@property (nonatomic,assign) NSTimeInterval time;
 /** 内存地址 */
 @property (nonatomic,strong) NSString * filePath;
 

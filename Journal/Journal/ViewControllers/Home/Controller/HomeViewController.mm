@@ -42,6 +42,9 @@
 - (void)config_base {
     self.view.backgroundColor   = ColorBackground;
     self.navigationItem.title   = @"记事本";
+    
+    // 设置push到的控制器的默认的导航按钮
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTitle:@"清空" style:UIBarButtonItemStyleDone target:self action:@selector(actionForClear)];
 }
 
 - (void)config_tableView {
@@ -66,6 +69,23 @@
     TL_CLog(@"当前目录：%ld",self.voicesListsArray.count);
     [self.tableView reloadData];
 }
+
+#pragma mark - Target
+- (void)actionForClear {
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"是否清空语音备忘录？" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
+    UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        [HOME_RECORDING_CACHE remoHomeRecordingModelCache];
+        [self config_data];
+
+    }];
+    [controller addAction:cancelAction];
+    [controller addAction:sureAction];
+    [self presentViewController:controller animated:YES completion:nil];
+    
+}
+
 #pragma mark - UITableViewDelegate && DataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     NSInteger count = self.voicesListsArray.count;

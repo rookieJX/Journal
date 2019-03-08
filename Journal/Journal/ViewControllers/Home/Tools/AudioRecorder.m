@@ -8,6 +8,7 @@
 
 #import "AudioRecorder.h"
 
+// 导入录音头文件（注意添加framework：AVFoundation.framework、AudioToolbox.framework）
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
 #import "AppDelegate.h"
@@ -25,6 +26,62 @@
 @end
 
 @implementation AudioRecorder
+
+#pragma mark - 文件处理
+
+/// 录音文件保存路径
+- (NSString *)GetFilePathWithDate
+{
+    NSDate *currentDate = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"YYYYMMddHHmmss"];
+    NSString *filePath = [dateFormatter stringFromDate:currentDate];
+    filePath = [NSString stringWithFormat:@"%@.aac", filePath];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                         NSUserDomainMask, YES);
+    
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    filePath = [documentsDirectory stringByAppendingFormat:@"/%@",filePath];
+    
+    return filePath;
+}
+
+/// 获取文件名（包含后缀，如：xxx.acc；不包含文件类型，如xxx）
+- (NSString *)GetFileNameWithFilePath:(NSString *)filePath hasFileType:(BOOL)hasFileType
+{
+    NSString *fileName = [filePath stringByDeletingLastPathComponent];
+    if (hasFileType)
+    {
+        fileName = [filePath lastPathComponent];
+    }
+    return fileName;
+}
+
+/// 获取文件大小
+- (NSInteger)GetFileSizeWithFilePath:(NSString *)filePath
+{
+    BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:filePath];
+    if (isExist)
+    {
+        NSDictionary *fileDict = [[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil];
+        long long fileSize = fileDict.fileSize;
+        return fileSize;
+    }
+    
+    return 0.0;
+}
+
+/// 删除文件
+- (void)DeleteFileWithFilePath:(NSString *)filePath
+{
+    BOOL isExist = [[NSFileManager defaultManager] fileExistsAtPath:filePath];
+    if (isExist)
+    {
+        [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
+    }
+}
 
 #pragma mark - 实例化
 
@@ -148,6 +205,11 @@
 {
     // 刷新音量数据
     [self.audioRecorder updateMeters];
+    
+    //    // 获取音量的平均值
+    //    [self.audioRecorder averagePowerForChannel:0];
+    //    // 音量的最大值
+    //    [self.audioRecorder peakPowerForChannel:0];
     
     double lowPassResults = pow(10, (0.05 * [self.audioRecorder peakPowerForChannel:0]));
     
